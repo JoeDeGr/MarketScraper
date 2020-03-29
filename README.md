@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MarketScraper
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/marketScraper`. To experiment with that code, run `bin/console` for an interactive prompt.
@@ -41,3 +42,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the MarketScraper project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'modern-puppet-6318'/marketScraper/blob/master/CODE_OF_CONDUCT.md).
+=======
+# MarketScraper
+>>>>>>> 7dbd8228f60d6050cbc1ec2531930c39ef72bcd3
