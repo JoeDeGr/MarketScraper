@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # MarketScraper
 
 Hello World!
@@ -48,3 +49,7 @@ Everyone interacting in the MarketScraper project’s codebases, issue trackers,
 =======
 # MarketScraper
 >>>>>>> 7dbd8228f60d6050cbc1ec2531930c39ef72bcd3
+=======
+# MarketScraper
+A gemfile to read market data
+>>>>>>> 7867d92cdc533371dc2bbcce7b21d061368e410a
