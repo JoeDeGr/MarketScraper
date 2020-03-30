@@ -6,7 +6,16 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    rake (10.5.0)
+    coderay (1.1.2)
+    method_source (1.0.0)
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
+    pry (0.13.0)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rake (13.0.1)
+    require_all (3.0.0)
 
 PLATFORMS
   ruby
@@ -14,7 +23,10 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   marketScraper!
-  rake (~> 10.0)
+  nokogiri
+  pry
+  rake (~> 13.0)
+  require_all
 
 BUNDLED WITH
    2.1.4
