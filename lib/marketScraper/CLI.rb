@@ -1,14 +1,13 @@
 #CLI controler
 
+require 'pry'
+
 class MarketScraper::CLI
+    attr_accessor :portfolio
 
     def call
+        @portfolio = ""
 
-        puts "Your Portfolio now:"
-
-        portfolio_value
-
-        portfolio_stocks
 
         menu_init
 
@@ -17,50 +16,71 @@ class MarketScraper::CLI
 
     def portfolio_value
 
-        puts "One Million Dollars!"
+        portfolio.value
+
+        # puts "One Million Dollars!"
     end
 
     def portfolio_stocks
 
-        puts <<-DOC
-        
-        You got the best Stocks!
+        portfolio.stocks
 
-            ABC 100 
-            DEF 100
-            GHI 100
-        3
-        DOC
+        # puts <<-DOC
+        
+        # You got the best Stocks!
+
+        #     ABC 100 
+        #     DEF 100
+        #     GHI 100
+        # DOC
     end
 
     def menu_init
-        puts "How may we further assist today"
-        puts <<-DOC.gsub /^\s*/,''
-        1) Review a specific stock in a portfolio
-        2) Create a new Portfolio
-        3) Add a new Stock to a portfolio
-        4) exit
-        DOC
-        input = gets.chomp.to_i
+        input = ""
 
-        case input
-        when 1
-            menu_stock
-        when 2
-            new_portfolio
-        when 3
-            add_stock_by_name
-        when 4
-            exit
+        if Portfolio.all.empty?
+            self.portfolio = Portfolio.create
+            # puts "What would you like to call your new portfolio?"
+            # input = gets.chomp
+            # self.portfolio = Portfolio.new(input)
+            
+            # puts "Your Portfolio #{portfolio.name}:"
+
+            # self.portfolio.value
+
+            # self.portfolio.stock
+            
+        else 
+            while input != 4
+                puts <<-DOC.gsub /^\s*/,''
+                You are currently viewing:
+                Portfolio #{self.portfolio.name}
+                How may we assist today?
+                1) Review a specific stock in a portfolio
+                2) Create a new Portfolio
+                3) Add a new Stock to a portfolio
+                4) exit
+                DOC
+                input = gets.chomp.to_i
+                case input
+                when 1
+                    self.portfolio.review_stocks
+                when 2
+                    self.portfolio = Portfolio.create
+                when 3
+                    self. portfolio.add_stock_by_name
+                end    
+            end
+            leave
         end
     end
 
-    def menu_stock
-        Stock.all.each {|s| puts s.name}
-        puts "which stock would you like to review?"
-        input = gets.chomp
-        puts Stock.all.input.info
-    end
+    # def menu_stock
+    #     portfolio.stocks.each {|s| puts s.name}
+    #     puts "which stock would you like to review?"
+    #     input = gets.chomp
+    #     puts Stock.all.input.info
+    # end
 
     def new_portfolio
         puts "What would you like the name of the new portfolio to be?"
@@ -70,18 +90,23 @@ class MarketScraper::CLI
         
     end
 
-    def add_stock_by_name
-        name = ""
-        value= 0
-        shares = 1
-        puts "What is the name of your new stock?"
-        input = gets.chomp
-        name = input
-        puts "How many shares do you have?"
-        input = gets.chomp.to_i
-        shares = input
-        Portfolio.add_stock(name, value, shares)
+    # # def add_stock_by_name
+    # #     name = ""
+    # #     value= 0
+    # #     shares = 1
+    # #     puts "What is the name of your new stock?"
+    # #     input = gets.chomp
+    # #     name = input
+    # #     puts "How many shares do you have?"
+    # #     input = gets.chomp.to_i
+    # #     shares = input
+    # #     Portfolio.add_stock(name, value, shares)
 
+    # end
+
+    def leave
+        puts "Goodbye!"
+        exit
     end
 
 

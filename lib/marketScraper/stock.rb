@@ -10,7 +10,6 @@ class Stock
         @shares = shares
         @value = value
         save
-        binding.pry
     end
 
     def save
