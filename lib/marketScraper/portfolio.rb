@@ -30,14 +30,16 @@ class Portfolio
 
 
     def add_stock_by_name
-        value= 0
         puts "What is the name of your new stock?"
         input = gets.chomp
         name = input
+        puts "What is the stock symbol?"
+        input = gets.chomp.upcase
+        symbol = input
         puts "How many shares do you have?"
         input = gets.chomp.to_i
         shares = input
-        stock = stock = Stock.new(name, value, shares)
+        stock = stock = Stock.new(name, symbol, shares)
         self.add_stock(stock)
     end
         
@@ -46,10 +48,14 @@ class Portfolio
             puts "You need to add a stock, silly!"
             self.add_stock_by_name
         else
-            self.stocks.each {|s| puts s.name}
-            puts "which stock would you like to review?"
-            input = gets.chomp
-           self.stocks.find{|i| i.name == input}.info
+            input = ""
+           until self.stocks.include?(input)
+            binding.pry
+                self.stocks.each {|s| puts s.name}
+                puts "which stock would you like to review?" 
+                input = gets.chomp
+            end
+            self.stocks.find{|i| i.name == input}.info
         end
     end
 

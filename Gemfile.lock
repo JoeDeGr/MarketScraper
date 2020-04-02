@@ -2,10 +2,14 @@ PATH
   remote: .
   specs:
     marketScraper (0.1.0)
+      nokogiri
+      require_all
+      watir
 
 GEM
   remote: https://rubygems.org/
   specs:
+    childprocess (3.0.0)
     coderay (1.1.2)
     method_source (1.0.0)
     mini_portile2 (2.4.0)
@@ -15,7 +19,15 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     rake (13.0.1)
+    regexp_parser (1.7.0)
     require_all (3.0.0)
+    rubyzip (2.3.0)
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
+    watir (6.16.5)
+      regexp_parser (~> 1.2)
+      selenium-webdriver (~> 3.6)
 
 PLATFORMS
   ruby
@@ -23,10 +35,8 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   marketScraper!
-  nokogiri
   pry
   rake (~> 13.0)
-  require_all
 
 BUNDLED WITH
    2.1.4
