@@ -4,8 +4,9 @@ require_relative './marketScraper/portfolio'
 require_relative './marketScraper/stock'
 
 module MarketScraper
-  class Error < StandardError; end
-  # Your code goes here...
 
+  class Error < StandardError; end
   
+  class InvalidType < StandardError; end
+
 end

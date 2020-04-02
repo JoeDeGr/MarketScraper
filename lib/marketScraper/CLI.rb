@@ -38,8 +38,8 @@ class MarketScraper::CLI
     def menu_init
         input = ""
 
-        if Portfolio.all.empty?
-            self.portfolio = Portfolio.create
+        while Portfolio.all.empty?
+            portfolio = Portfolio.create
             # puts "What would you like to call your new portfolio?"
             # input = gets.chomp
             # self.portfolio = Portfolio.new(input)
@@ -50,29 +50,33 @@ class MarketScraper::CLI
 
             # self.portfolio.stock
             
-        else 
-            while input != 4
-                puts <<-DOC.gsub /^\s*/,''
-                You are currently viewing:
-                Portfolio #{self.portfolio.name}
-                How may we assist today?
-                1) Review a specific stock in a portfolio
-                2) Create a new Portfolio
-                3) Add a new Stock to a portfolio
-                4) exit
-                DOC
-                input = gets.chomp.to_i
-                case input
-                when 1
-                    self.portfolio.review_stocks
-                when 2
-                    self.portfolio = Portfolio.create
-                when 3
-                    self. portfolio.add_stock_by_name
-                end    
-            end
-            leave
+        end 
+            # menu_2
+        while input != 5
+            puts <<-DOC.gsub /^\s*/,''
+            You are currently viewing:
+            Portfolio #{portfolio.name}
+            How may we assist today?
+            1) Create a new Portfolio
+            2) Review a specific Stock in this Portfolio
+            3) Add a new Stock to this Portfolio
+            4) Switch Portfolios
+            5) Exit
+            DOC
+            input = gets.chomp.to_i
+            case input
+            
+            when 1
+                portfolio = Portfolio.create
+            when 2
+                portfolio.review_stocks    
+            when 3
+                portfolio.add_stock_by_name
+            when 4
+                portfolio = Portfolio.switch
+            end    
         end
+        leave
     end
 
     # def menu_stock
@@ -87,7 +91,7 @@ class MarketScraper::CLI
         input = gets.chomp
         name = input
         Portfolio.new(name)
-        
+        menu_2
     end
 
     # # def add_stock_by_name
@@ -109,13 +113,29 @@ class MarketScraper::CLI
         exit
     end
 
-
-        
-     
-
-
-
-
-
-
+    # def menu_2
+    #     while input != 4
+    #         puts <<-DOC.gsub /^\s*/,''
+    #         You are currently viewing:
+    #         Portfolio #{self.portfolio.name}
+    #         How may we assist today?
+    #         1) Review a specific stock in a portfolio
+    #         2) Create a new Portfolio
+    #         3) Add a new Stock to a portfolio
+    #         4) exit
+    #         DOC
+    #         input = gets.chomp.to_i
+    #         case input
+    #         when 1
+    #             self.portfolio.review_stocks
+                
+    #         when 2
+    #             self.portfolio = Portfolio.create
+                
+    #         when 3
+    #             self. portfolio.add_stock_by_name
+    #         end    
+    #     end
+    #     leave
+    # end
 end

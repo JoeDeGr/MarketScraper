@@ -1,5 +1,6 @@
 class Portfolio
-    attr_accessor :name, :stocks, :value
+    attr_accessor :name, :value
+    attr_reader :stocks
     
     @@all = []
 
@@ -7,17 +8,7 @@ class Portfolio
         @name = name
         @stocks = []
         @value = 0
-        self.name
         save
-
-
-    end
-
-    def add_stock(name, value, shares)
-        puts "Here's what you have done!"
-        stock = Stock.new(name, value, shares)
-        @stocks << stock
-
     end
 
     def self.all
@@ -32,7 +23,6 @@ class Portfolio
         if self.stocks.empty?
             puts "You need to add a stock, silly!"
             self.add_stock_by_name
-            
         else
             puts self.stocks
         end
@@ -47,26 +37,54 @@ class Portfolio
         puts "How many shares do you have?"
         input = gets.chomp.to_i
         shares = input
-        self.add_stock(name, value, shares)
+        stock = stock = Stock.new(name, value, shares)
+        self.add_stock(stock)
     end
         
     def review_stocks
-        portfolio.stocks.each {|s| puts s.name}
-        puts "which stock would you like to review?"
-        input = gets.chomp
-        puts Stock.all.input.info
+        if self.stocks.empty?
+            puts "You need to add a stock, silly!"
+            self.add_stock_by_name
+        else
+            self.stocks.each {|s| puts s.name}
+            puts "which stock would you like to review?"
+            input = gets.chomp
+           self.stocks.find{|i| i.name == input}.info
+        end
     end
+
+    def add_stock(stock)
+        if !stock.is_a?(Stock)
+            raise InvalidType, "Invalid stock type, stock must be a Stock!"
+        else
+            @stocks << stock
+            @value += stock.total_value
+        end
+    end
+
+    def stock
+        @stock.dup.freeze
+    end
+
 
     def self.create
         puts "What would you like to call your new portfolio?"
         input = gets.chomp
         portfolio = self.new(input)
-        
-        puts "Your Portfolio #{portfolio.name}:"
-
-        portfolio.stock
-
-       "Portfolio value is: #{portfolio.value}"
     end
+
+    def self.switch
+        if self.all.empty?
+            puts "You need to add a portfolio, silly!"
+            self.create
+        else
+            self.all.each {|p| puts p.name}
+            puts "which portfolio would you like to review?"
+            input = gets.chomp
+            self.all.find{|i| i.name == input}
+        end
+    end
+
+
 
 end

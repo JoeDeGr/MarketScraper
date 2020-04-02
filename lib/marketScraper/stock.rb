@@ -25,5 +25,10 @@ class Stock
         puts self.shares
         puts self.value
     end
+
+    def total_value 
+        total = self.value * self.shares
+        total
+    end
     
 end
