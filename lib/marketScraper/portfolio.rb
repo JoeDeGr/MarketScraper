@@ -1,3 +1,5 @@
+require 'pry'
+
 class Portfolio
     attr_accessor :name, :value
     attr_reader :stocks
@@ -34,7 +36,7 @@ class Portfolio
         input = gets.chomp
         name = input
         puts "What is the stock symbol?"
-        input = gets.chomp.upcase
+        input = gets.chomp.upcase.to_s
         symbol = input
         puts "How many shares do you have?"
         input = gets.chomp.to_i
@@ -48,11 +50,15 @@ class Portfolio
             puts "You need to add a stock, silly!"
             self.add_stock_by_name
         else
+            stock = []
+            self.stocks.each do |s|
+                stock << s.name
+            end
             input = ""
-           until self.stocks.include?(input)
-                self.stocks.each {|s| puts s.name}
-                puts "which stock would you like to review?" 
-                input = gets.chomp
+            until stock.include? (input)
+                    self.stocks.each {|s| puts s.name}
+                    puts "which stock would you like to review?" 
+                    input = gets.chomp.to_s
             end
             self.stocks.find{|i| i.name == input}.info
         end

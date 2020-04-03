@@ -45,8 +45,6 @@ class Stock
 
     def get_info
 
-        # symbol = self.symbol
-
         # url = "http://eoddata.com/stockquote/NYSE/.htm"
 
         # doc = Nokogiri::HTML(open("http://eoddata.com/stockquote/NYSE/#{self.symbol}.htm"))
