@@ -39,7 +39,7 @@ class Portfolio
         puts "How many shares do you have?"
         input = gets.chomp.to_i
         shares = input
-        stock = stock = Stock.new(name, symbol, shares)
+        stock = Stock.new(name, symbol, shares)
         self.add_stock(stock)
     end
         
@@ -50,7 +50,6 @@ class Portfolio
         else
             input = ""
            until self.stocks.include?(input)
-            binding.pry
                 self.stocks.each {|s| puts s.name}
                 puts "which stock would you like to review?" 
                 input = gets.chomp
