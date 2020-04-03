@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'pry'
 require 'nokogiri'
-require 'watir'
 require_relative "./marketScraper/version"
 require_relative './marketScraper/cli'
 require_relative './marketScraper/portfolio'
