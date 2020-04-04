@@ -4,11 +4,8 @@ class MarketScraper::CLI
     attr_accessor :portfolio
 
     def call
-
         @portfolio = ""
-
         menu_init
-
     end
 
     def menu_init
@@ -16,22 +13,23 @@ class MarketScraper::CLI
 
         while Portfolio.all.empty?
             portfolio = Portfolio.create
-  
         end 
-            # menu_2
         while input != 5
-            puts <<-DOC.gsub /^\s*/,''
-            You are currently viewing:
-            Portfolio name:  #{portfolio.name}
-            Portfolio value: #{portfolio.value}
-
-            How may we assist today?
-            1) Create a new Portfolio
-            2) Review a specific Stock in this Portfolio
-            3) Add a new Stock to this Portfolio
-            4) Switch Portfolios
-            5) Exit
-            DOC
+            # puts <<-DOC.gsub /^\s*/,''
+            puts ""
+            puts "You are currently viewing:"
+            puts ""
+            puts "Portfolio Name:  #{portfolio.name}"
+            puts ""
+            puts "Portfolio Total Value: #{portfolio.value}"
+            puts ""
+            puts "How may we assist today?"
+            puts "1) Create a new Portfolio"
+            puts "2) Review a specific Stock in this Portfolio"
+            puts "3) Add a new Stock to this Portfolio"
+            puts "4) Switch Portfolios"
+            puts "5) Exit"
+            # DOC
             input = gets.chomp.to_i
             case input
             

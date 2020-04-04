@@ -29,21 +29,22 @@ class Stock
     end
 
     def info
-        puts "Here is the info for #{self.name}"
-        
+        puts ""
+        puts "Here is the info for #{self.name}:"
+        puts ""
         puts "You have #{self.shares} shares in your portfolio."
-        
+        puts ""
         puts "Each share is valued at #{self.value} per share."
-        
+        puts " "
         puts "The total value is #{self.total_value}."
-        
+        puts ""
         puts "On #{self.date} there was the following data:"
-        
-        puts "  Open:   #{self.start}"
-        puts "  High:   #{self.high}"
-        puts "   Low:   #{self.low}"
-        puts " Close:   #{self.value}"
-        puts "volume:   #{self.volume}"
+        puts ""
+        puts "      Open:   #{self.start}"
+        puts "      High:   #{self.high}"
+        puts "       Low:   #{self.low}"
+        puts "     Close:   #{self.value}"
+        puts "    Volume:   #{self.volume}"
     end
 
     def total_value 

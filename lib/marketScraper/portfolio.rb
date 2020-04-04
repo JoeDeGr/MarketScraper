@@ -28,7 +28,6 @@ class Portfolio
         end
     end
 
-
     def add_stock_by_name
         puts "What is the name of your new stock?"
         input = gets.chomp
