@@ -21,8 +21,7 @@ class Portfolio
 
     def stock
         if self.stocks.empty?
-            puts "You need to add a stock, silly!"
-            self.add_stock_by_name
+            self.empty
         else
             puts self.stocks
         end
@@ -35,22 +34,22 @@ class Portfolio
         puts "What is the stock symbol?"
         input = gets.chomp.upcase.to_s
         symbol = input
+        puts "Which exchange is the stock traded on?"
+        input = gets.chomp.upcase.to_s
+        exchange = input
         puts "How many shares do you have?"
         input = gets.chomp.to_i
         shares = input
-        stock = Stock.new(name, symbol, shares)
+        stock = Stock.new(name, symbol, shares, exchange)
         self.add_stock(stock)
     end
         
     def review_stocks
         if self.stocks.empty?
-            puts "You need to add a stock, silly!"
-            self.add_stock_by_name
+            self.empty
         else
             stock = []
-            self.stocks.each do |s|
-                stock << s.name
-            end
+            self.stocks.each {|s| stock << s.name}  
             input = ""
             until stock.include? (input)
                     self.stocks.each {|s| puts s.name}
@@ -92,4 +91,19 @@ class Portfolio
             self.all.find{|i| i.name == input}
         end
     end
+    
+    def empty
+        puts "You need to add a stock, silly!"
+            self.add_stock_by_name
+    end
+
+    def self.yaargh!
+        self.all.clear
+    end
+
+    def clear_portfolio
+        self.stocks.clear
+        self.value = 0
+    end
+
 end

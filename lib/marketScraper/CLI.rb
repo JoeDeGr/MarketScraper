@@ -14,8 +14,8 @@ class MarketScraper::CLI
         while Portfolio.all.empty?
             portfolio = Portfolio.create
         end 
-        while input != 5
-            # puts <<-DOC.gsub /^\s*/,''
+        while input != 7
+            
             puts ""
             puts "You are currently viewing:"
             puts ""
@@ -28,9 +28,12 @@ class MarketScraper::CLI
             puts "2) Review a specific Stock in this Portfolio"
             puts "3) Add a new Stock to this Portfolio"
             puts "4) Switch Portfolios"
-            puts "5) Exit"
-            # DOC
+            puts "5) Clear all stocks in this Portfolio."
+            puts "6) YARRRGH!"
+            puts "7) Exit"
+
             input = gets.chomp.to_i
+
             case input
             
             when 1
@@ -41,17 +44,50 @@ class MarketScraper::CLI
                 portfolio.add_stock_by_name
             when 4
                 portfolio = Portfolio.switch
+            when 5
+                portfolio.clear_portfolio
+            when 6
+                
+                portfolio.clear_portfolio
+                sleep(5)
+                puts ""
+                puts "Your Stock..."
+                sleep(4)
+                puts "...They're all gone!:"
+                puts ""
+                puts "...<weeping>..."
+                sleep(3)
+                puts ""
+                puts "I am sad."
+                puts ""
+                sleep(2)
+                puts "LOOK WHAT YOU'VE DONE!!!!"
+                puts ""
+                puts "Portfolio Name:  #{portfolio.name}"
+                puts ""
+                puts "Portfolio Total Value: #{portfolio.value}"
+                puts ""
+                sleep(6)
+                puts "... Wait... WHAT'S THAT!!!!!"
+                sleep(6)
+                puts "YAAAAAAAAARRRRRRRGH!!!!"
+                sleep(5)
+                puts "...<silence>..."
+                sleep(5)
+                puts ""
+                Portfolio.yaargh!
+                Stock.yaargh!
+                portfolio.name = ""
+                puts "You are currently viewing:"
+                puts ""
+                puts "Portfolio Name:  #{portfolio.name}"
+                puts ""
+                puts "Portfolio Total Value: #{portfolio.value}"
+                puts ""
+                portfolio = Portfolio.create
             end    
         end
         leave
-    end
-
-    def new_portfolio
-        puts "What would you like the name of the new portfolio to be?"
-        input = gets.chomp
-        name = input
-        Portfolio.new(name)
-        menu_2
     end
 
     def leave

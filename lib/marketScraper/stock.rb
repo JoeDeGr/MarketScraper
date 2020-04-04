@@ -1,13 +1,14 @@
 class Stock
     attr_accessor 
-    attr_reader :symbol, :name, :shares, :start, :high, :low, :value, :date, :volume
+    attr_reader :symbol, :name, :shares, :start, :high, :low, :value, :date, :volume, :exchange
 
     @@all = []
 
-    def initialize (name, symbol, shares)
+    def initialize (name, symbol, shares, exchange)
         @name = name
         @shares = shares
         @symbol = symbol
+        @exchange = exchange
         self.get_info
         save
     end
@@ -18,6 +19,14 @@ class Stock
 
     def symbol=
         @symbol = symbol
+    end
+
+    def exchange
+        @exchange.dup.freeze
+    end
+
+    def exchange=
+        @exchange = exchange
     end
 
     def save
@@ -33,6 +42,8 @@ class Stock
         puts "Here is the info for #{self.name}:"
         puts ""
         puts "You have #{self.shares} shares in your portfolio."
+        puts ""
+        puts "The equity is traded on #{self.exchange}."
         puts ""
         puts "Each share is valued at #{self.value} per share."
         puts " "
@@ -53,7 +64,8 @@ class Stock
     end 
 
     def get_info
-        doc = Nokogiri::HTML(open("http://eoddata.com/stockquote/NYSE/#{self.symbol}.htm"))
+
+        doc = Nokogiri::HTML(open("http://eoddata.com/stockquote/#{self.exchange}/#{self.symbol}.htm"))
 
         @date = doc.css("table.quotes tr:nth-child(2) > td:nth-child(1)").first.text.strip
         @start =doc.css("table.quotes tr:nth-child(2) > td:nth-child(2)").first.text.strip
@@ -62,4 +74,8 @@ class Stock
         @value = doc.css("table.quotes tr:nth-child(2) > td:nth-child(5)").first.text.strip
         @volume = doc.css("table.quotes tr:nth-child(2) > td:nth-child(6)").first.text.strip
     end    
+
+    def self.yaargh!
+        self.all.clear
+    end
 end
