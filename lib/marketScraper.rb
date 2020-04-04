@@ -12,5 +12,5 @@ module MarketScraper
   class Error < StandardError; end
   
   class InvalidType < StandardError; end
-
+  
 end

@@ -53,9 +53,7 @@ class Portfolio
                 stock << s.name
             end
             input = ""
-                self.stocks.each {|s| puts s.name}
-                puts "which stock would you like to review?" 
-                input = gets.chomp
+            until stock.include? (input)
                     self.stocks.each {|s| puts s.name}
                     puts "which stock would you like to review?" 
                     input = gets.chomp.to_s
@@ -95,7 +93,4 @@ class Portfolio
             self.all.find{|i| i.name == input}
         end
     end
-
-
-
 end
