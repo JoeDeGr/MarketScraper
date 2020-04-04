@@ -53,7 +53,7 @@ class MarketScraper::CLI
                 puts ""
                 puts "Your Stock..."
                 sleep(4)
-                puts "...They're all gone!:"
+                puts "...They're all gone!"
                 puts ""
                 puts "...<weeping>..."
                 sleep(3)
