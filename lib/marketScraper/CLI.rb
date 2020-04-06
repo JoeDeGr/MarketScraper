@@ -11,6 +11,10 @@ class MarketScraper::CLI
     def menu_init
         input = ""
 
+        puts "Hello World!"
+        sleep(1)
+        puts "Welcome to the market Scraper!"
+        sleep(1)
         while Portfolio.all.empty?
             portfolio = Portfolio.create
         end 
@@ -47,44 +51,8 @@ class MarketScraper::CLI
             when 5
                 portfolio.clear_portfolio
             when 6
-                
-                portfolio.clear_portfolio
-                sleep(5)
-                puts ""
-                puts "Your Stock..."
-                sleep(4)
-                puts "...They're all gone!"
-                puts ""
-                puts "...<weeping>..."
-                sleep(3)
-                puts ""
-                puts "I am sad."
-                puts ""
-                sleep(2)
-                puts "LOOK WHAT YOU'VE DONE!!!!"
-                puts ""
-                puts "Portfolio Name:  #{portfolio.name}"
-                puts ""
-                puts "Portfolio Total Value: #{portfolio.value}"
-                puts ""
-                sleep(6)
-                puts "... Wait... WHAT'S THAT!!!!!"
-                sleep(6)
-                puts "YAAAAAAAAARRRRRRRGH!!!!"
-                sleep(5)
-                puts "...<silence>..."
-                sleep(5)
-                puts ""
-                Portfolio.yaargh!
-                Stock.yaargh!
-                portfolio.name = ""
-                puts "You are currently viewing:"
-                puts ""
-                puts "Portfolio Name:  #{portfolio.name}"
-                puts ""
-                puts "Portfolio Total Value: #{portfolio.value}"
-                puts ""
-                portfolio = Portfolio.create
+                yaargh
+                menu_init
             end    
         end
         leave
@@ -93,5 +61,48 @@ class MarketScraper::CLI
     def leave
         puts "Goodbye!"
         exit
+    end
+
+    def yaargh 
+        sleep(5)
+        puts ""
+        puts "Your Stock..."
+        sleep(4)
+        puts ""
+        puts "...They're all gone!"
+        puts ""
+        puts "...<weeping>..."
+        sleep(3)
+        puts ""
+         puts "I am sad."
+        puts ""
+        sleep(2)
+        puts "LOOK WHAT YOU'VE DONE!!!!"
+
+        Portfolio.all.each do |p|
+            p.clear_portfolio
+            puts ""
+            puts "Portfolio Name:  #{p.name}"
+            puts ""
+            puts "Portfolio Total Value: #{p.value}"
+            puts ""
+            sleep(3)
+        end
+        puts "... Wait... WHAT'S THAT!!!!!"
+        sleep(6)
+        puts ""
+        puts "YAAAAAAAAARRRRRRRGH!!!!"
+        sleep(5)
+        puts ""
+        puts "...<silence>..."
+        sleep(5)
+        puts ""
+        Portfolio.yaargh!
+        Stock.yaargh!
+        puts "You are currently viewing:"
+        puts ""
+        puts "THERE ARE NO PORTFOLIOS TO VIEW. PLEASE COME BACK LATER."
+        sleep(6)
+        puts ""
     end
 end

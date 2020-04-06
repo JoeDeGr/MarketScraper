@@ -1,5 +1,5 @@
 class Portfolio
-    attr_accessor :name, :value
+    attr_accessor :name 
     attr_reader :stocks
     
     @@all = []
@@ -7,7 +7,6 @@ class Portfolio
     def initialize(name)
         @name = name
         @stocks = []
-        @value = 0
         save
     end
 
@@ -65,19 +64,38 @@ class Portfolio
             raise InvalidType, "Invalid stock type, stock must be a Stock!"
         else
             @stocks << stock
-            @value += stock.total_value
+            # @value += stock.total_value
         end
     end
 
+    def value
+        value = 0
+        if self.stocks.empty?
+            value
+        else
+        self.stocks.each do |s| 
+            value += s.total_value
+            end
+        value
+        end
+    end
+        
     def stock
         @stock.dup.freeze
     end
 
 
     def self.create
+        names = []
+        self.all.each {|p| names << p.name}
         puts "What would you like to call your new portfolio?"
         input = gets.chomp
+        if names.include?(input)
+            puts "Lets try being origional, shall we?"
+            self.create
+        else
         portfolio = self.new(input)
+        end
     end
 
     def self.switch
@@ -103,7 +121,6 @@ class Portfolio
 
     def clear_portfolio
         self.stocks.clear
-        self.value = 0
     end
 
 end
