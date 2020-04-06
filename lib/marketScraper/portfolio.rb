@@ -64,7 +64,6 @@ class Portfolio
             raise InvalidType, "Invalid stock type, stock must be a Stock!"
         else
             @stocks << stock
-            # @value += stock.total_value
         end
     end
 
