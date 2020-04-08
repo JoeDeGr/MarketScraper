@@ -9,12 +9,14 @@ class MarketScraper::CLI
     end
 
     def menu_init
+        
         input = ""
 
         puts "Hello World!"
         sleep(1)
         puts "Welcome to the market Scraper!"
         sleep(1)
+
         while Portfolio.all.empty?
             portfolio = Portfolio.create
         end 
@@ -88,6 +90,7 @@ class MarketScraper::CLI
             puts ""
             sleep(3)
         end
+        
         puts "... Wait... WHAT'S THAT!!!!!"
         sleep(6)
         puts ""
@@ -97,8 +100,10 @@ class MarketScraper::CLI
         puts "...<silence>..."
         sleep(5)
         puts ""
+
         Portfolio.yaargh!
         Stock.yaargh!
+
         puts "You are currently viewing:"
         puts ""
         puts "THERE ARE NO PORTFOLIOS TO VIEW. PLEASE COME BACK LATER."
