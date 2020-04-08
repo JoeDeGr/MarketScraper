@@ -71,24 +71,35 @@ class MarketScraper::CLI
         puts "Your Stock..."
         sleep(4)
         puts ""
-        puts "...They're all gone!"
+        puts "...They're..." 
+        sleep(2) 
         puts ""
+        puts "...all gone!"
+        puts ""
+        sleep(3)
+        puts "...w ...w ... where did they all go?"
+        puts ""
+        sleep(3)
         puts "...<weeping>..."
         sleep(3)
         puts ""
          puts "I am sad."
         puts ""
+        sleep(4)
+        puts "...<soft grumbling as if a beast has awaken>..."
         sleep(2)
+        puts ""
         puts "LOOK WHAT YOU'VE DONE!!!!"
 
         Portfolio.all.each do |p|
+            sleep(3)
             p.clear_portfolio
             puts ""
             puts "Portfolio Name:  #{p.name}"
             puts ""
             puts "Portfolio Total Value: #{p.value}"
             puts ""
-            sleep(3)
+            
         end
         
         puts "... Wait... WHAT'S THAT!!!!!"
@@ -104,9 +115,9 @@ class MarketScraper::CLI
         Portfolio.yaargh!
         Stock.yaargh!
 
-        puts "You are currently viewing:"
+        sleep(3)
         puts ""
-        puts "THERE ARE NO PORTFOLIOS TO VIEW. PLEASE COME BACK LATER."
+        puts "THERE ARE NO PORTFOLIOS TO VIEW AT THIS TIME. PLEASE COME BACK LATER."
         sleep(6)
         puts ""
     end
