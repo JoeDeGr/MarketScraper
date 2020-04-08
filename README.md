@@ -27,7 +27,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Hello World! This gem is designed ato aggegate stock data in a hyopthetical portfolio. You can have multiple portfolios and stocks and each stock when called will return relevant data that is the most recent available.
+
+this is not meant to be a definitive source of data but rather a place to explore or trach how a hypothetical portfolio of stocks might look at a given time. Please feel free to use it as such.
+
+Please bundle install then you can exicute bin/marketScraper to begin.
+
+A word to the wise, yaarg! can be fun, but proceede with caution.
 
 ## Development
 
