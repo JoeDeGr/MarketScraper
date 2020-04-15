@@ -17,9 +17,9 @@ class MarketScraper::CLI
         puts "Welcome to the market Scraper!"
         sleep(1)
 
-        while Portfolio.all.empty?
+        # while Portfolio.all.empty?
             portfolio = Portfolio.create
-        end 
+        # end 
         while input != 7
             
             puts ""

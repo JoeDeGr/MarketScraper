@@ -52,9 +52,7 @@ class Portfolio
         if self.stocks.empty?
             self.empty
         else
-            stock = []
-
-            self.stocks.each {|s| stock << s.name}
+            stock = self.stocks.collect {|s| s.name}
 
             input = ""
             until stock.include? (input)
